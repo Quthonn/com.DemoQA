@@ -7,14 +7,12 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.open;
 
-public class DemoQA {
+public class RegistrationTests {
 
     @BeforeAll
     static void beforeAll() {
-//        Configuration.holdBrowserOpen = true;
-//        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.holdBrowserOpen = true;
-
         ChromeOptions options = new ChromeOptions();
         options.setPageLoadStrategy(org.openqa.selenium.PageLoadStrategy.EAGER); // Try EAGER first
         Configuration.browserCapabilities = options;
@@ -22,14 +20,13 @@ public class DemoQA {
 
     @Test
     public void TextBox() {
-        open("https://demoqa.com/text-box");
+        open("/text-box");
         $("#userName").setValue("Guru");
     }
 
     @Test
     public void AutomationPracticeForm() {
-        Configuration.holdBrowserOpen = true;
-        open("https://demoqa.com/automation-practice-form");
+        open("/automation-practice-form");
 
 //        Попробовать подобрать более читаемые на глаз селекторы
 
@@ -38,25 +35,24 @@ public class DemoQA {
         $("#userEmail").shouldBe(visible).setValue("John@gmail.com");
         $("label[for='gender-radio-1']").click();
         $("#userNumber").shouldBe(visible).setValue("1177723077");
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__month-select").selectOption("July");
+        $(".react-datepicker__year-select").selectOption("2000");
+        $(".react-datepicker__day--030:not(.react-datepicker__day--outside-month)").click();
 
         $("#subjectsInput").setValue("English").pressEnter();
         $("label[for='hobbies-checkbox-1']").click();
         $("#uploadPicture").uploadFromClasspath("img/dog.jpeg");
         $("#currentAddress").shouldBe(visible).setValue("Wall Street 777");
-//        $("html > body > div:nth-of-type(2) > div > div > div > div:nth-of-type(2) > div:nth-of-type(2) " +
-//                "> form > div:nth-of-type(10) > div:nth-of-type(2) > div > div > div:nth-of-type(1) " +
-//                "> div:nth-of-type(1)")
-//                .click(); //State select
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Gurgaon")).click();
         $("#submit").click();
+
         $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the formm"));
 
 
-        //Добавить нажатие кнопки Submit и проверку
-//        $(".text-center").shouldBe(visible).shouldHave(text("Practice Form"));
     }
 }
