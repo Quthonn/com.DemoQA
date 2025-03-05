@@ -127,4 +127,10 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage verifyResult(String key, String value) {
+        registrationResultsModal.verifyResult(key, value);
+
+        return this;
+    }
+
 }

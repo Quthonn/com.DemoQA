@@ -45,6 +45,7 @@ public class RegistrationWithPageObjectsTests {
         String day = "23";
         String month = "July";
         String year = "2001";
+        String dateOfBirth = day + " " + month + "," + year;
 
         registrationPage.openPage()
                 .setFirstName(userName)
@@ -60,10 +61,22 @@ public class RegistrationWithPageObjectsTests {
                 .setState(state)
                 .setCity(city)
                 .setSubmitClick()
-                .verifyResultsModalAppear();
-        $(".table-responsive").shouldHave(text(userName), text(lastName), text(userEmail), text(gender),
-                text(number), text(subjects), text(hobbies), text(imageName),
-                text(currentAddress), text(state), text(city), text(day), text(month), text(year));
+                .verifyResultsModalAppear()
+                .verifyResult("Student Name", userName + " " + lastName)
+                .verifyResult("Student Email", userEmail)
+                .verifyResult("Gender", gender)
+                .verifyResult("Mobile", number)
+                .verifyResult("Date of Birth", dateOfBirth)
+                .verifyResult("Subjects", subjects)
+                .verifyResult("Hobbies", hobbies)
+                .verifyResult("Picture", imageName)
+                .verifyResult("Address", currentAddress)
+                .verifyResult("State and City", state + " " + city);
+
+
+//        $(".table-responsive").shouldHave(text(userName), text(lastName), text(userEmail), text(gender),
+//                text(number), text(subjects), text(hobbies), text(imageName),
+//                text(currentAddress), text(state), text(city), text(day), text(month), text(year));
 
 
     }
