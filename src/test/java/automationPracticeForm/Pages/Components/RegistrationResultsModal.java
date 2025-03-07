@@ -9,7 +9,6 @@ public class RegistrationResultsModal {
     public void verifyModalAppear() {
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-//        $(".table-responsive").shouldHave(text(userName));
     }
 
     public void verifyResult(String key, String value) {

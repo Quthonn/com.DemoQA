@@ -5,10 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-
-
 public class RegistrationWithPageObjectsTests {
 
     @BeforeAll
@@ -18,12 +14,6 @@ public class RegistrationWithPageObjectsTests {
         ChromeOptions options = new ChromeOptions();
         options.setPageLoadStrategy(org.openqa.selenium.PageLoadStrategy.EAGER); // Try EAGER first
         Configuration.browserCapabilities = options;
-    }
-
-    @Test
-    public void TextBox() {
-        open("/text-box");
-        $("#userName").setValue("Guru");
     }
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -73,12 +63,5 @@ public class RegistrationWithPageObjectsTests {
                 .verifyResult("Picture", imageName)
                 .verifyResult("Address", currentAddress)
                 .verifyResult("State and City", state + " " + city);
-
-
-//        $(".table-responsive").shouldHave(text(userName), text(lastName), text(userEmail), text(gender),
-//                text(number), text(subjects), text(hobbies), text(imageName),
-//                text(currentAddress), text(state), text(city), text(day), text(month), text(year));
-
-
     }
 }

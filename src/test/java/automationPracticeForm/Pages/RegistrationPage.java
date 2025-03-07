@@ -3,7 +3,6 @@ package automationPracticeForm.Pages;
 import automationPracticeForm.Pages.Components.CalendarComponent;
 import automationPracticeForm.Pages.Components.RegistrationResultsModal;
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -26,12 +25,10 @@ public class RegistrationPage {
             currentAddressInput = $("#currentAddress"),
             stateInput = $("#stateCity-wrapper"),
             cityInput = $("#stateCity-wrapper"),
-            submitClick = $("#submit")
-                    ;
+            submitClick = $("#submit");
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-//        $("div[class='practice-form-wrapper']").shouldHave(text("Student Registration Form"));
 
         return this;
     }
@@ -93,7 +90,6 @@ public class RegistrationPage {
 
     public RegistrationPage setCurrentAddress(String value) {
         currentAddressInput.setValue(value);
-//        $("#state").click();
 
         return this;
     }
