@@ -1,6 +1,4 @@
-package Pages.Components;
-
-import com.codeborne.selenide.SelenideElement;
+package automationPracticeForm.Pages.Components;
 
 import static com.codeborne.selenide.Selenide.$;
 

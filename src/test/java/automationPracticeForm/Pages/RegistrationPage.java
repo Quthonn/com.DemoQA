@@ -1,10 +1,9 @@
-package Pages;
+package automationPracticeForm.Pages;
 
-import Pages.Components.CalendarComponent;
-import Pages.Components.RegistrationResultsModal;
+import automationPracticeForm.Pages.Components.CalendarComponent;
+import automationPracticeForm.Pages.Components.RegistrationResultsModal;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
