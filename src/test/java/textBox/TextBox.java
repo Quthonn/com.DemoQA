@@ -10,9 +10,6 @@ public class TextBox {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.holdBrowserOpen = true;
-        ChromeOptions options = new ChromeOptions();
-        options.setPageLoadStrategy(org.openqa.selenium.PageLoadStrategy.EAGER); // Try EAGER first
-        Configuration.browserCapabilities = options;
         Configuration.browserSize = "1920x880";
     }
 
