@@ -3,6 +3,8 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
+import textBox.Pages.RegistrationPage;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -19,6 +21,8 @@ public class TextBox {
         Configuration.browserSize = "1920x880";
     }
 
+    RegistrationPage registrationPage = new RegistrationPage();
+
     @Test
     public void TextBox() {
         String userName = "Ivan";
@@ -26,12 +30,12 @@ public class TextBox {
         String currentAddress = "Wall Street 666";
         String permanentAddress = "Wall Street 6";
 
-        open("/text-box");
-        $("#userName").setValue(userName);
-        $("#userEmail").setValue(userEmail);
-        $("#currentAddress").setValue(currentAddress);
-        $("#permanentAddress").setValue(permanentAddress);
-        $("#submit").shouldHave(visible).click();
+        registrationPage.openPage()
+                .setUserName(userName)
+                .setUserMail(userEmail)
+                .setCurrentAddress(currentAddress)
+                .setPermanentAddress(permanentAddress)
+                .SubmitClick();
 
         $("div[class*='col-md-12']").$(byText("Name:")).parent().shouldHave(text(userName));
         $("div[class*='col-md-12']").$(byText("Email:")).parent().shouldHave(text(userEmail));
