@@ -1,12 +1,14 @@
 package textBox.Pages;
 
 import com.codeborne.selenide.SelenideElement;
-
+import textBox.Pages.Components.ResultCheck;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
 public class RegistrationPage {
+
+    ResultCheck resultCheck = new ResultCheck();
+
     private SelenideElement
             userNameInput = $("#userName"),
             userMailInput = $("#userEmail"),
@@ -50,5 +52,28 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage nameCheck(String key, String value) {
+        resultCheck.nameCheck(key, value);
+
+        return this;
+    }
+
+    public RegistrationPage mailCheck(String key, String value) {
+        resultCheck.mailCheck(key, value);
+
+        return this;
+    }
+
+    public RegistrationPage currentAddressCheck(String key, String value) {
+        resultCheck.currentAddressCheck(key, value);
+
+        return this;
+    }
+
+    public RegistrationPage permanentAddressCheck(String key, String value) {
+        resultCheck.permanentAddressCheck(key, value);
+
+        return this;
+    }
 
 }

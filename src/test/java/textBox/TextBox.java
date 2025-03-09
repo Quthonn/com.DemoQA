@@ -5,11 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 import textBox.Pages.RegistrationPage;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-
 public class TextBox {
     @BeforeAll
     static void beforeAll() {
@@ -35,12 +30,11 @@ public class TextBox {
                 .setUserMail(userEmail)
                 .setCurrentAddress(currentAddress)
                 .setPermanentAddress(permanentAddress)
-                .SubmitClick();
-
-        $("div[class*='col-md-12']").$(byText("Name:")).parent().shouldHave(text(userName));
-        $("div[class*='col-md-12']").$(byText("Email:")).parent().shouldHave(text(userEmail));
-        $("div[class*='col-md-12']").$(byText("Current Address :")).parent().shouldHave(text(currentAddress));
-        $("div[class*='col-md-12']").$(byText("Permananet Address :")).parent().shouldHave(text(permanentAddress));
+                .SubmitClick()
+                .nameCheck("Name:", userName)
+                .mailCheck("Email:", userEmail)
+                .currentAddressCheck("Current Address :", currentAddress)
+                .permanentAddressCheck("Permananet Address :", permanentAddress);
 
     }
 }
